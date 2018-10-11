@@ -35,11 +35,6 @@ RUN rm -rf /etc/nginx/sites-enabled/default
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY nginx.conf /etc/nginx/nginx.conf
-
-COPY index.html /var/www/html
-COPY img /mnt/img
-
 RUN mkdir /etc/nginx/ssl
 RUN chmod 600 -R /etc/nginx/ssl
 RUN chown -R root:root /etc/nginx/ssl
