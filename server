@@ -20,6 +20,8 @@ server {
     # Need to recompile nginx with module nginx-extras
     # Change the Server content in header
     more_set_headers "Server: ${HTTP_SERVER_NAME}";
+    # Robots filter
+    add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";    
     # Protect clickjacking
     add_header X-Frame-Options SAMEORIGIN;
     # Protect XSS
