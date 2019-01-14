@@ -7,14 +7,13 @@ services:
       - "8080:80"
       - "443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/mysite.template
+      - ./server:/etc/nginx/mysite.template
       - ./ssl:/etc/nginx/ssl
-      - ./index.html:/var/www/html/index.html
-      - ./img:/mnt/img
+      - /etc/letsencrypt:/etc/letsencrypt
     environment:
       - WWW_URL=127.0.0.1
       - HTTP_SERVER_NAME=docker.tld
       - CERT_NAME=server
       - CERT_TRUST_NAME=letsencrypt
       - DH_NAME=dhparam
-    command: /bin/bash -c "envsubst \"`env | awk -F = '{printf \" $$%s\", $$1}'`\" < /etc/nginx/mysite.template > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"
+    command: /bin/bash -c "envsubst \"`env | awk -F = '{printf \" $$%s\", $$1}'`\" < /etc/nginx/mysite.template > /etc/nginx/sites-enabled/server && exec nginx -g 'daemon off;'"
