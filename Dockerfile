@@ -5,7 +5,7 @@ LABEL maintainer="david@itarverne.fr"
 RUN apt-get -y update 
 RUN apt-get -y install nginx-extras libpcre3-dev build-essential libssl-dev wget gettext-base
 
-RUN  cd /tmp && wget https://nginx.org/download/nginx-1.15.6.tar.gz && tar zxvf nginx-1.15.6.tar.gz
+RUN  cd /tmp && wget https://nginx.org/download/nginx-1.15.8.tar.gz && tar zxvf nginx-1.15.8.tar.gz
 
 RUN rm -rf *.tar.gz
 
@@ -13,18 +13,18 @@ RUN cd /tmp && wget --no-check-certificate https://github.com/openresty/headers-
 
 RUN cd /tmp
 
-RUN cd /tmp/nginx-1.15.6 && \
-            ./configure \
-            --prefix=/etc/nginx \
-            --sbin-path=/usr/sbin/nginx \
-            --conf-path=/etc/nginx/nginx.conf \
-            --with-http_gunzip_module \
-            --with-http_ssl_module \
-            --with-http_v2_module \
-            --with-http_gzip_static_module \
-            --add-module=/tmp/headers-more-nginx-module-0.33 
+RUN cd /tmp/nginx-1.15.8 && \
+        ./configure \
+        --prefix=/etc/nginx \
+        --sbin-path=/usr/sbin/nginx \
+        --conf-path=/etc/nginx/nginx.conf \
+        --with-http_gunzip_module \
+        --with-http_ssl_module \
+        --with-http_v2_module \
+        --with-http_gzip_static_module \
+        --add-module=/tmp/headers-more-nginx-module-0.33 
 
-RUN cd /tmp/nginx-1.15.6 && \
+RUN cd /tmp/nginx-1.15.8 && \
         make && \
         make install
 
