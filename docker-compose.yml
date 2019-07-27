@@ -7,11 +7,12 @@ services:
       - "8080:80"
       - "443:443"
     volumes:
-      - ./server:/etc/nginx/mysite.template
+      - ./nginx.conf:/etc/nginx/mysite.template
       - ./ssl:/etc/nginx/ssl
       - /etc/letsencrypt:/etc/letsencrypt
     environment:
       - WWW_URL=127.0.0.1
+      - STATIC_ROOT=/mnt/static
       - HTTP_SERVER_NAME=docker.tld
       - CERT_NAME=server
       - CERT_TRUST_NAME=letsencrypt
