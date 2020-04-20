@@ -4,7 +4,7 @@ services:
     image: general03/nginx-secu
     container_name: my-server
     ports:
-      - "8080:80"
+      - "8888:80"
       - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/mysite.template
