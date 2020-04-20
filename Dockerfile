@@ -5,7 +5,7 @@ LABEL maintainer="david@itarverne.fr"
 RUN apt-get -y update 
 RUN apt-get -y install nginx-extras libpcre3-dev build-essential libssl-dev wget gettext-base
 
-RUN  cd /tmp && wget https://nginx.org/download/nginx-1.15.8.tar.gz && tar zxvf nginx-1.15.8.tar.gz
+RUN  cd /tmp && wget https://nginx.org/download/nginx-1.17.9.tar.gz && tar zxvf nginx-1.17.9.tar.gz
 
 RUN rm -rf *.tar.gz
 
@@ -13,7 +13,7 @@ RUN cd /tmp && wget --no-check-certificate https://github.com/openresty/headers-
 
 RUN cd /tmp
 
-RUN cd /tmp/nginx-1.15.8 && \
+RUN cd /tmp/nginx-1.17.9 && \
         ./configure \
         --prefix=/etc/nginx \
         --sbin-path=/usr/sbin/nginx \
@@ -24,7 +24,7 @@ RUN cd /tmp/nginx-1.15.8 && \
         --with-http_gzip_static_module \
         --add-module=/tmp/headers-more-nginx-module-0.33 
 
-RUN cd /tmp/nginx-1.15.8 && \
+RUN cd /tmp/nginx-1.17.9 && \
         make && \
         make install
 
